@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import {
@@ -15,14 +15,21 @@ import {
   CardMedia,
   CardContent,
   CardActions,
+  BottomNavigation,
+  BottomNavigationAction,
 } from "@material-ui/core";
-import MenuIcon  from "@material-ui/icons/Menu";
-import  LayerIcon from "@material-ui/icons/Layers"; 
+import MenuIcon from "@material-ui/icons/Menu";
+import LayerIcon from "@material-ui/icons/Layers";
+import RestoreIcon from "@material-ui/icons/Restore";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import FolderIcon from "@material-ui/icons/Folder";
+
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
-import { makeStyles,} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 // import { Paper } from "@material-ui/core";
 // https://material-ui.com/ru/getting-started/installation/
-//? */ https://www.youtube.com/watch?v=RVSR2p6vxi0&t=170s
+//?  video */ https://www.youtube.com/watch?v=RVSR2p6vxi0&t=170s
 
 //! theme: объект темы, ранее введенный в контекст. 13 min video
 //? https://material-ui.com/ru/styles/advanced/#css-injection-order
@@ -61,23 +68,26 @@ const useStyles = makeStyles((theme: any) => ({
     marginTop: theme.spacing(8),
   },
   mainContent: {},
-  cardGrid:{
-    marginTop:theme.spacing(4)
+  cardGrid: {
+    marginTop: theme.spacing(4),
   },
-  card:{},
-  cardMedia:{
-    paddingTop:'56.25%'
+  card: {},
+  cardMedia: {
+    paddingTop: "56.25%",
   },
-  cardContent:{
-    flexGrow:1
+  cardContent: {
+    flexGrow: 1,
   },
-
 }));
 
 const cards = [1, 2, 3, 4, 5]; //31min video
+
 function App() {
   const classes = useStyles(); //13.40 min
-
+  const [value, setValue] = useState("recents"); //42min video
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+    setValue(newValue);
+  };
   return (
     <>
       <AppBar position="fixed">
@@ -194,18 +204,23 @@ function App() {
                     title="Image title"
                   ></CardMedia>
                   <CardContent className={classes.cardContent}>
-                    <Typography variant="h5" gutterBottom>
+                    <Typography align="center" variant="h5" gutterBottom>
                       Blog Post
                     </Typography>
-                    <Typography  >
-                      Blog Post. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat, corrupti!
+                    <Typography>
+                      Blog Post. Lorem ipsum dolor sit, amet consectetur
+                      adipisicing elit. Fugiat, corrupti!
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size='small' color='primary'>View</Button>
-                    <Button size='small' color='primary'>Edit</Button>
-                    <LayerIcon/>
-                    <PlayCircleFilledIcon/>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                    <LayerIcon />
+                    <PlayCircleFilledIcon />
                   </CardActions>
                 </Card>
               </Grid>
@@ -213,6 +228,39 @@ function App() {
           </Grid>
         </Container>
       </main>
+      {/* 37min video */}
+      <footer>
+        <Typography variant="h5" align="center" gutterBottom>
+          Footer
+        </Typography>
+        <BottomNavigation
+          value={value}
+          onChange={handleChange}
+          className={classes.root}
+        >
+          <BottomNavigationAction
+            label="Recents"
+            value="recents"
+            icon={<RestoreIcon />}
+          />
+          <BottomNavigationAction
+            label="Favorites"
+            value="favorites"
+            icon={<FavoriteIcon />}
+          />
+          <BottomNavigationAction
+            label="Nearby"
+            value="nearby"
+            icon={<LocationOnIcon />}
+          />
+          <BottomNavigationAction
+            label="Folder"
+            value="folder"
+            icon={<FolderIcon />}
+          />
+        </BottomNavigation>
+        <Typography variant="subtitle1" align="center" color="textSecondary" component='p' >  Blog Post </Typography>
+      </footer>
     </>
   );
 }

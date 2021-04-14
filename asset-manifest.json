@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/practice-material-ui/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/practice-material-ui/static/js/main.9f61f67b.chunk.js",
+    "main.js.map": "/practice-material-ui/static/js/main.9f61f67b.chunk.js.map",
+    "runtime-main.js": "/practice-material-ui/static/js/runtime-main.88b9c54c.js",
+    "runtime-main.js.map": "/practice-material-ui/static/js/runtime-main.88b9c54c.js.map",
+    "static/js/2.66888477.chunk.js": "/practice-material-ui/static/js/2.66888477.chunk.js",
+    "static/js/2.66888477.chunk.js.map": "/practice-material-ui/static/js/2.66888477.chunk.js.map",
+    "static/js/3.85e134c5.chunk.js": "/practice-material-ui/static/js/3.85e134c5.chunk.js",
+    "static/js/3.85e134c5.chunk.js.map": "/practice-material-ui/static/js/3.85e134c5.chunk.js.map",
+    "index.html": "/practice-material-ui/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/practice-material-ui/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.66888477.chunk.js.LICENSE.txt": "/practice-material-ui/static/js/2.66888477.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.88b9c54c.js",
+    "static/js/2.66888477.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.9f61f67b.chunk.js"
+  ]
+}

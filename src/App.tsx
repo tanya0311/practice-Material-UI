@@ -4,7 +4,6 @@ import "./App.css";
 import {
   AppBar,
   Box,
-  Button,
   Container,
   IconButton,
   Toolbar,
@@ -17,6 +16,12 @@ import {
   CardActions,
   BottomNavigation,
   BottomNavigationAction,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  TextField,
+  DialogActions,
+  Dialog,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import LayerIcon from "@material-ui/icons/Layers";
@@ -27,6 +32,7 @@ import FolderIcon from "@material-ui/icons/Folder";
 
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 // import { Paper } from "@material-ui/core";
 // https://material-ui.com/ru/getting-started/installation/
 //?  video */ https://www.youtube.com/watch?v=RVSR2p6vxi0&t=170s
@@ -85,9 +91,17 @@ const cards = [1, 2, 3, 4, 5]; //31min video
 function App() {
   const classes = useStyles(); //13.40 min
   const [value, setValue] = useState("recents"); //42min video
+  const [open, setOpen]=useState(false)
   const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
     setValue(newValue);
   };
+ const handClickOpen =()=>{  //45min
+setOpen(true)
+}
+const handleClose =()=>{  
+  setOpen(false)
+}
+
   return (
     <>
       <AppBar position="fixed">
@@ -108,9 +122,21 @@ function App() {
             {/* Typography компонента где прописываем блог */}
             {/* Box компонента типа div mr={3}-margin */}
             <Box mr={3}>
-              <Button color="inherit" variant="outlined">
+              <Button color="inherit" variant="outlined" onClick={handClickOpen}> 
                 log in
               </Button>
+              <Dialog open={open} onClose={handleClose} aria-labelledly='form-dialog-title'>
+                <DialogTitle id='form-dialog-title' >Log in</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>Log in to see video</DialogContentText>
+                  <TextField autoFocus margin="dense" id='name' label='Email adress' type='email' fullWidth />
+                  <TextField autoFocus margin="dense" id='pass' label='Password' type='password' fullWidth />
+                </DialogContent>
+                <DialogActions >
+                  <Button onClick={handleClose} color='primary'>Cancel</Button>
+                  <Button onClick={handleClose} color='primary'>Log in</Button>
+                </DialogActions>
+              </Dialog>
             </Box>
             <Button color="secondary" variant="contained">
               sing up
